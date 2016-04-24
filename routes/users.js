@@ -1,13 +1,12 @@
 var express = require('express');
+var $data = require('../model/core');
 var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    var db = req.db;
-    var collection = db.get('usercollection');
-    collection.find({},{},function(err,docs){
+    $data.getAllUser(function(data){
         res.render('user',{
-            "users":docs
+            users: data
         });
     });
 });

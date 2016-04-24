@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>User</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<%include ./public/header%>
   <ul>
       <% for(var i=0; i<users.length; i++) { %>
-
       <li>
           name:<%= users[i]["username"] %> ,e-mail:<%= users[i]["e-mail"] %><br>
       </li>
       <% } %>
   </ul>
-  </body>
-</html>
+<%include ./public/footer%>
