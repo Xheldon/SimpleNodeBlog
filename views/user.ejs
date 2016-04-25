@@ -1,9 +1,12 @@
-<%include ./public/header%>
-  <ul>
-      <% for(var i=0; i<users.length; i++) { %>
-      <li>
-          name:<%= users[i]["username"] %> ,e-mail:<%= users[i]["e-mail"] %><br>
-      </li>
-      <% } %>
-  </ul>
-<%include ./public/footer%>
+<% include ./public/header %>
+<ul>
+    <% for(var i = 0; i < users.length; i++) { %>
+    <li>
+        name:<%= users[i]["username"] %> ,e-mail:<%= users[i]["e-mail"] %><br>
+    </li>
+    <% } %>
+</ul>
+<p>
+    <%=test%>
+</p>
+<% include ./public/footer %>
