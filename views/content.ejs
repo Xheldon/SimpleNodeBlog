@@ -1,0 +1,14 @@
+<% include ./public/head %>
+<%include ./public/header%>
+<%for(var i = 0;i<article.length;i++){%>
+    <div class="article">
+        <div class="title">
+            <%= article[i]["title"]%>
+        </div>
+        <div class="content">
+            <%= article[i]["content"]%>
+        </div>
+    </div>
+<%}%>
+<script src="/js/content.js"></script>
+<% include ./public/footer %>

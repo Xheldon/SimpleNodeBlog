@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <%for(var a=0;a<libCss.length;a++){%>
+        <link rel='stylesheet' href='<%= libCss[a] %>' />
+    <%}%>
+    <%for(var b=0;b<libJs.length;b++){%>
+        <script src="<%= libJs[b]%>"></script>
+    <%}%>
+</head>
+<body>

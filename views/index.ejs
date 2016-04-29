@@ -1,4 +1,9 @@
+<%include ./public/head%>
 <%include ./public/header%>
-    <h1><%= name %></h1>
-    <p>Welcome to <%= place %></p>
+    <h1>
+        <% var s = '';$shit.getAllUser(function(data){s = data;});%>
+        <li><%= s[1]["username"]%></li>
+    </h1>
+    <p>Welcome to Beijing</p>
+<script src="/js/index.js"></script>
 <%include ./public/footer%>

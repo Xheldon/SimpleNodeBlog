@@ -1,14 +1,13 @@
 var express = require('express');
-var $data = require('../model/core');
 var router = express.Router();
+var $data = require('../model/core').$user;
+var $ = require('../controller/util');
+var wrap = require('co-express');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-    $data.$user.getAllUser(function(data){
-        res.render('user',{
-            users: data
-        });
-    });
-});
+router.get('/', wrap(function *(req, res, next) {
+    res.render('user',$.extend(req.staticRes,{
+        users: yield $data.getAllUser()
+    }))
+}));
 
 module.exports = router;
