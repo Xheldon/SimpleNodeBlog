@@ -15,7 +15,7 @@ var staticRes = require('./config').lib;
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));//view视图文件
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
@@ -24,14 +24,23 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));//静态资源文件
 
 app.use(function(req,res,next){
     req.staticRes = staticRes;
     next();
 });
 
-
+app.get('/',function(req, res,next){
+    if(req.cookies.isVisit){
+        console.log(req.cookies);
+        console.log('欢迎再次光临');
+    }else{
+        res.cookie('isVisit',1,{maxAge: 60*1000});
+        console.log('欢迎再次光临');
+    }
+    next();
+});
 
 app.use('/', routes);
 app.use('/users', users);
