@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -26,21 +27,44 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));//静态资源文件
 
-app.use(function(req,res,next){
+app.use(function(req,res,next){//设置静态资源
     req.staticRes = staticRes;
     next();
 });
 
-app.get('/',function(req, res,next){
-    if(req.cookies.isVisit){
-        console.log(req.cookies);
-        console.log('欢迎再次光临');
+app.use(session({
+    secret: 'the cake is a lie',
+    cookie: {
+        maxAge: 60*1000
+    },
+    resave: true,
+    saveUninitialized: true
+}));
+
+
+app.get('/',function(req, res,next){//设置cookie/session
+    //cookie 示例
+    // if(req.cookies.isVisit){
+    //     console.log(req.cookies);
+    //     console.log('欢迎再次光临');
+    // }else{
+    //     res.cookie('isVisit',1,{maxAge: 60*1000});
+    //     console.log('欢迎再次光临');
+    // }
+
+    //session示例
+    if(req.session.isVisit){
+        req.session.isVisit++;
+        console.log('再次见面很高兴!',req.session.isVisit);
     }else{
-        res.cookie('isVisit',1,{maxAge: 60*1000});
-        console.log('欢迎再次光临');
+        req.session.isVisit = 1;
+        console.log('初次见面很高兴!',':',req.session);
     }
+
+
     next();
 });
+
 
 app.use('/', routes);
 app.use('/users', users);

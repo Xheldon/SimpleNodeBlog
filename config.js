@@ -3,6 +3,8 @@
  */
 exports.lib = {
     libJs: ["/lib/jquery/dist/jquery.js",
-        "/lib/bootstrap/dist/js/bootstrap.js"],
-    libCss: ["/lib/bootstrap/dist/css/bootstrap.css"]
+        "/lib/flat-ui/dist/js/flat-ui.js"],
+    libCss: ["/lib/bootstrap/dist/css/bootstrap.css",
+        "/lib/flat-ui/dist/css/flat-ui.css"
+    ]
 };
