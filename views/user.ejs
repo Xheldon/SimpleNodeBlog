@@ -1,11 +1,16 @@
 <% include ./public/head %>
 <%include ./public/header%>
-<ul>
-    <% for(var i = 0; i < users.length; i++) { %>
-    <li>
-        name:<%= users[i]["username"] %> ,e-mail:<%= users[i]["e-mail"] %><br>
-    </li>
-    <% } %>
-</ul>
+<div class="container">
+     <div class="row">
+         <div class="col-xs-9">
+            <h4>一个我</h4>
+             <hr>
+             <article>
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque eos, iusto libero possimus quod? Aspernatur cupiditate eum labore nihil possimus quaerat reiciendis sit sunt temporibus ullam velit, voluptatem.
+             </article>
+         </div>
+         <%include ./public/side%>
+     </div>
+</div>
 <script src="js/user.js"></script>
 <% include ./public/footer %>

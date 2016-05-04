@@ -1,0 +1,22 @@
+<% include ./public/head %>
+<%include ./public/header%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-9">
+            <article data-id="<%= data['_id'] %>">
+                <div class="h6">
+                    <button class="btn btn-primary btn-xs">原创</button>
+                    <%= data['post-title']%>
+                </div>
+                <span class="small"><kbd>2016-5-4</kbd></span>
+                <div class="content">
+                    <%= data['post-content']%>
+                </div>
+            </article>
+        </div>
+        <%include ./public/side%>
+    </div>
+</div>
+<script src="/js/post.js"></script>
+<% include ./public/footer %>

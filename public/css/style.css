@@ -1,3 +1,49 @@
+/*首页*/
+body > .container{
+    min-height: 1000px;
+}
 .navbar{
     border-radius: 0;
+}
+.btn-xs, .btn-group-xs > .btn{
+    margin: -5px 10px 0 0;
+    padding: 5px 9px;
+}
+h4, .h4, h5, .h5, h6, .h6{
+    margin-bottom:5px;
+}
+@media (min-width: 768px) {
+    .navbar-form .input-group {
+        width: 235px;
+    }
+}
+.panel-default > .panel-heading{
+    background-color: #ecf0f1;
+}
+blockquote{
+    margin: 0;
+}
+.navbar-btn.btn-xs{
+    margin: -5px 0 0 0;
+}
+body{
+    padding-top: 84px;
+}
+footer{
+    background-color: #ecf0f1;
+}
+/*首页结束*/
+textarea {
+    resize: none;
+    margin-top: 50px;
+}
+/*post-new*/
+.submit{
+    margin-top: 50px;
+}
+.post-title .h5{
+    margin-bottom: 20px;
+}
+.post-title #title{
+    margin-bottom: 20px;
 }
