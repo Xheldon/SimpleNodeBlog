@@ -1,5 +1,5 @@
 /*首页*/
-body > .container{
+body > .container,body > .container-fluid{
     min-height: 1000px;
 }
 .navbar{
@@ -27,7 +27,7 @@ blockquote{
     margin: -5px 0 0 0;
 }
 body{
-    padding-top: 84px;
+    padding-top: 83px;
 }
 footer{
     background-color: #ecf0f1;
@@ -46,4 +46,10 @@ textarea {
 }
 .post-title #title{
     margin-bottom: 20px;
+}
+.login-screen{
+    padding: 123px 200px 33px 200px;
+}
+.login-screen{
+    background: white;
 }

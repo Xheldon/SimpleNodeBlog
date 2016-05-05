@@ -5,18 +5,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+//路由
 var routes = require('./controller/index');
 var users = require('./controller/users');
 var post = require('./controller/post');
 var post_new = require('./controller/post-new');
-
+var login= require('./controller/login');
+//静态资源
 var staticRes = require('./config').lib;
 
 
 var app = express();
 
-// view engine setup
+//视图模板引擎
 app.set('views', path.join(__dirname, 'views'));//view视图文件
 app.set('view engine', 'ejs');
 
@@ -28,7 +29,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));//静态资源文件
 
-app.use(function(req,res,next){//设置静态资源
+app.use(function(req,res,next){//给每个请求都设置一个静态资源
     req.staticRes = staticRes;
     next();
 });
@@ -36,14 +37,14 @@ app.use(function(req,res,next){//设置静态资源
 app.use(session({
     secret: 'the cake is a lie',
     cookie: {
-        maxAge: 60*1000
+        maxAge: 60000000
     },
     resave: true,
     saveUninitialized: true
 }));
 
 
-app.get('/',function(req, res,next){//设置cookie/session
+app.use(function(req, res,next){//设置cookie/session
     //cookie 示例
     // if(req.cookies.isVisit){
     //     console.log(req.cookies);
@@ -54,15 +55,9 @@ app.get('/',function(req, res,next){//设置cookie/session
     // }
 
     //session示例
-    if(req.session.isVisit){
-        req.session.isVisit++;
-        console.log('再次见面很高兴!',req.session.isVisit);
-    }else{
-        req.session.isVisit = 1;
-        console.log('初次见面很高兴!',':',req.session);
+    if(!req.session.user){
+        req.session.user = 0;
     }
-
-
     next();
 });
 
@@ -71,6 +66,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/post', post);
 app.use('/post-new', post_new);
+app.use('/login', login);
 
 
 

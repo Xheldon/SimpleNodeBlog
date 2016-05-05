@@ -6,3 +6,6 @@ var userCollection = db.get('usercollection');
 exports.getAllUser = function () {
         return userCollection.find();
 };
+exports.findUserByName = function(username){
+    return userCollection.findOne({username:username});
+};
