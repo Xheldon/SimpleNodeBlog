@@ -20,9 +20,9 @@ router.post('/',wrap(function *(req,res){
         var date = new Date(),
             year = date.getFullYear(),
             month = date.getMonth() + 1,
-            day = date.getDate(),
-            data = yield $data.$postNew.insertPost(req.body);
+            day = date.getDate();
         req.body['post-date'] = year + '-' + month + '-' + day;
+        var data = yield $data.$postNew.insertPost(req.body);
         res.send(data);
     }
 }));
