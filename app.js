@@ -37,7 +37,7 @@ app.use(function(req,res,next){//给每个请求都设置一个静态资源
 app.use(session({
     secret: 'the cake is a lie',
     cookie: {
-        maxAge: 60000000
+        maxAge: 60000000//session过期毫秒数
     },
     resave: true,
     saveUninitialized: true

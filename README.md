@@ -25,28 +25,47 @@
 
 **`appjs`** 为应用的总入口
 
-**`其他`** 文件都是node里面的常见文件，稍微懂点node的应该都知道，比如 package.json、.gitignore、.bowerrc等。
+**`其他`** 文件都是node里面的常见文件，稍微懂点node的应该都知道，比如 `package.json`、`.gitignore`、`.bowerrc` 等。
 
 ##TODO List
 
 ###待加入功能
 
 1. 注册功能(这部分的数据库需要好好设计)
-2. 退出登录实现（清空session）
-3. forever的运用和部署在服务器上的研究
+2. 退出登录实现（清空 `session` ）
+3. `forever` 的运用和部署在服务器上的研究
 4. 用户发送的账户密码加密发送给后端,后端拿到密码加密存进数据库
 5. 话题标签
 6. 首页显示的时候是文章简介,而不是全部内容,这个后端来截取存进数据库.
-7. 在post-new界面加入富文本编辑器
+7. 在 `post-new` 界面加入富文本编辑器
 8. 访问不存在页面的错误处理(包括访问post/不带id等情况)
 9. 富文本编辑器防嵌入脚本攻击处理
 
 ###待优化协同开发体验部分
 
-1. 开发过程中自动化打包工具grunt的加入
-2. rquireJS/seaJS的使用
+1. 开发过程中自动化打包工具 `grunt` 的加入
+2. `rquireJS/seaJS` 依赖加载工具的引入的使用
 
-###License
+##项目运行基本要求
+
+1. `node 4.x` 环境,其他环境未做测试
+2. `mongodb` 最新
+3. `express 4.x` 版本
+4. 一个支持 `ES6` 语法高亮的 `IDE` (推荐 `Webstrom` ,可能需要设置 `JavaScript ES6` 语法支持)
+
+##启动项目步骤
+
+1. `cd` 到此目录,执行 `npm install` 安装依赖.
+2. 执行 `bower install bootstrap`
+3. 执行 `bower install jquery`
+4. 执行 `bower install flat-ui`
+5. 执行 `npm start`
+
+##数据结构
+
+数据库相关信息（地址、端口、数据库名称等）在根目录下的 `config` 都配置完毕。数据表的名称可在 `model` 文件夹的各个相关文件中找到。
+
+##License
 
 MIT
 
