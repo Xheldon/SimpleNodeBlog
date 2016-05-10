@@ -7,5 +7,13 @@ module.exports = {
     },
     getPostByPostTitle: function(title){
         return postCollection.find({'post-title':title});
+    },
+    getSomePost: function(obj){
+        return postCollection.find({},{
+            limit: obj.start,
+            sort: {
+                "post-date": 1
+            }
+        })
     }
 };
