@@ -1,19 +1,17 @@
-// var db = require('../model/public').db;
-// var postCollection = db.get('postcollection');
-//
-// module.exports = {
-//     getPostById: function (id){
-//         return postCollection.findById(id);
-//     },
-//     getPostByPostTitle: function(title){
-//         return postCollection.find({'post-title':title});
-//     },
-//     getSomePost: function(obj){
-//         return postCollection.find({},{
-//             limit: obj.start,
-//             sort: {
-//                 "post-date": 1
-//             }
-//         })
-//     }
-// };
+
+var Post = require('../schema/core').$post;
+
+module.exports = {
+    getAllPost: function(){
+        return Post.find().exec();
+    },
+    getPostById: function(id){
+        return Post.findOne({'_id':id}).exec();
+    },
+    createNewPost: function(data){
+        return Post.create(data);
+    },
+    getPostByPostTitle: function(title){
+        return Post.findOne({'posttitle':title});
+    }
+};

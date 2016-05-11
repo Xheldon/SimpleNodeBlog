@@ -3,16 +3,15 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-9">
-            <%for(var i=0;i<article.length;i++){%>
+            <%for(var i=0,length = data.length;i<length;i++){%>
             <article>
                 <div class="h6">
                     <button class="btn btn-primary btn-xs">原创</button>
-                    这个地方是文章标题
+                    <a href="/post/<%=data[i]['_id']%>"><%=data[i]['posttitle']%></a>
                 </div>
-                <span class="small"><kbd>2016-5-4</kbd></span>
+                <span class="small"><kbd><%=data[i]['postdate']%></kbd></span>
                 <div class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium beatae culpa, delectus ducimus earum fugit itaque iure magnam magni nemo neque nihil obcaecati quaerat quam suscipit tenetur? Ducimus, sed!
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium beatae culpa, delectus ducimus earum fugit itaque iure magnam magni nemo neque nihil obcaecati quaerat quam suscipit tenetur? Ducimus, sed!
+                    <%=data[i]['postcontent']%>
                 </div>
             </article>
             <hr>

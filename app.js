@@ -9,8 +9,8 @@ var bodyParser = require('body-parser');
 var routes = require('./controller/index');
 var users = require('./controller/users');
 var post = require('./controller/post');
-var post_new = require('./controller/post-new');
 var login= require('./controller/login');
+var postNew= require('./controller/post-new');
 //静态资源
 var staticRes = require('./config').lib;
 
@@ -65,8 +65,8 @@ app.use(function(req, res,next){//设置cookie/session
 app.use('/', routes);
 app.use('/users', users);
 app.use('/post', post);
-app.use('/post-new', post_new);
 app.use('/login', login);
+app.use('/post-new', postNew);
 
 
 

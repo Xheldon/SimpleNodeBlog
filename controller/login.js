@@ -11,7 +11,7 @@ router.get('/', wrap(function *(req, res, next) {
 router.post('/', wrap(function *(req, res, next) {
     var user = req.body['username'],
         pw = req.body['password'],
-        _user = yield $data.findUserByName(user);//未找到为null
+        _user = yield $data.getUserByUserName(user);//未找到为null
     if(_user != null && _user['password'] == pw){
         //登录成功
         req.session.user = _user;
