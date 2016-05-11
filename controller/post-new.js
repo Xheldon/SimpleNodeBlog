@@ -8,7 +8,7 @@ var $ = require('../controller/util');
 var wrap = require('co-express');
 
 router.get('/', wrap(function *(req,res,next){
-    if(req.session.user == 0){
+    if(req.session.user.username == null || req.session.user == null){//前者为未登录,后者为已退出
         res.redirect('/login?post-new');
     }else{
         res.render('post-new',$.extend(req.staticRes));
@@ -27,7 +27,7 @@ router.post('/',wrap(function *(req,res){
         var s = year + '-' + month + '-' + day;
         req.body['postdate'] = year + '-' + month + '-' + day;
         var data = yield $data.$post.createNewPost(req.body);
-        res.send(data);
+        res.send(data['_id']);
     }
 }));
 module.exports = router;

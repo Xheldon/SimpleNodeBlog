@@ -4,7 +4,7 @@
 /**
  * Created by smzdm on 16/5/4.
  */
-$("[type='submit']").click(function(e){
+$(document).on('click',"[type='submit']",function(e){
     e.preventDefault();
     var obj = {};
     obj['posttitle'] = $('#title').val();
@@ -13,8 +13,7 @@ $("[type='submit']").click(function(e){
         if(data == '0'){
             alert('该标题已经存在,请换个标题重新尝试');
         }else{
-            var id = data['_id'];
-            window.location.href = 'post/'+id;
+            window.location.href = 'post/' + data;
         }
     })
 });

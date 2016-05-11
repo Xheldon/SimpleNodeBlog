@@ -10,7 +10,8 @@ var routes = require('./controller/index');
 var users = require('./controller/users');
 var post = require('./controller/post');
 var login= require('./controller/login');
-var postNew= require('./controller/post-new');
+var postNew = require('./controller/post-new');
+var logout = require('./controller/logout');
 //静态资源
 var staticRes = require('./config').lib;
 
@@ -28,11 +29,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));//静态资源文件
-
-app.use(function(req,res,next){//给每个请求都设置一个静态资源
-    req.staticRes = staticRes;
-    next();
-});
 
 app.use(session({
     secret: 'the cake is a lie',
@@ -53,20 +49,25 @@ app.use(function(req, res,next){//设置cookie/session
     //     res.cookie('isVisit',1,{maxAge: 60*1000});
     //     console.log('欢迎再次光临');
     // }
-
+    req.staticRes = staticRes;//给每个请求都设置一个静态资源
     //session示例
     if(!req.session.user){
-        req.session.user = 0;
+        req.session.user = {
+            username: null,
+            email: null,
+            login: false
+        };
     }
     next();
 });
 
-
+// 设置路由
 app.use('/', routes);
 app.use('/users', users);
 app.use('/post', post);
 app.use('/login', login);
 app.use('/post-new', postNew);
+app.use('/logout', logout);
 
 
 

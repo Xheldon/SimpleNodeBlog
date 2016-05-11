@@ -1,7 +1,7 @@
 /**
  * Created by smzdm on 16/5/4.
  */
-$("#login-btn").click(function(e){
+$(document).on('click',"#login-btn",function(e){
     e.preventDefault();
     var obj = {};
     obj['username'] = $('#login-name').val();
