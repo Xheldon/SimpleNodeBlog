@@ -27,7 +27,7 @@
 
 **`appjs`** 为应用的总入口
 
-**`其他`** 文件都是node里面的常见文件，稍微懂点node的应该都知道，比如 `package.json`、`.gitignore`、`.bowerrc` 等,其中通过bower安装的文件已经通过.bowerrc配置,安装在/public/lib文件夹下。
+**`其他`** 文件都是node里面的常见文件，稍微懂点node的应该都知道，比如 `package.json`、`.gitignore`、`.bowerrc` 等,其中通过 `bower` 安装的文件已经通过 `.bowerrc` 配置,安装在 `/public/lib` 文件夹下。
 
 ##Finish List
 
