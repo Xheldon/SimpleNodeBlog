@@ -24,7 +24,6 @@ router.post('/',wrap(function *(req,res){
             year = date.getFullYear(),
             month = date.getMonth() + 1,
             day = date.getDate();
-        var s = year + '-' + month + '-' + day;
         req.body['postdate'] = year + '-' + month + '-' + day;
         var data = yield $data.$post.createNewPost(req.body);
         res.send(data['_id']);

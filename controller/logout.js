@@ -14,9 +14,9 @@ router.get('/',function(req,res,next){
      *       return this;
      *   };
      * */
-    req.session.destroy();
+    req.session.destroy();//req.session为undefined
 
-    console.log(req.session);//undefined
+    console.log(req.session);
     res.send('1');
 });
 module.exports = router;
