@@ -7,9 +7,9 @@ var wrap = require('co-express');
 
 /* GET home page. */
 router.get('/', wrap(function*(req, res, next) {
-    res.render('index',$.extend(req.staticRes,{
+    res.render('index',{
         data: yield $data.getAllPost()
-    }))
+    })
 }));
 
 module.exports = router;

@@ -7,8 +7,8 @@ router.get('/',wrap(function *(req,res,next){
     res.redirect('/');
 }));
 router.get('/:id', wrap(function *(req,res,next){
-    res.render('post',$.extend(req.staticRes,{
+    res.render('post',{
         data: yield $data.getPostById(req.params.id)
-    }))
+    })
 }));
 module.exports = router;

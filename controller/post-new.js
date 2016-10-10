@@ -8,10 +8,11 @@ var $ = require('../controller/util');
 var wrap = require('co-express');
 
 router.get('/', wrap(function *(req,res,next){
+    console.log(req.session.user);
     if(req.session.user.username == null || req.session.user == null){//前者为未登录,后者为已退出
         res.redirect('/login?post-new');
     }else{
-        res.render('post-new',$.extend(req.staticRes));
+        res.render('post-new');
     }
 }));
 router.post('/',wrap(function *(req,res){

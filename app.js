@@ -49,7 +49,7 @@ app.use(function(req, res,next){//设置cookie/session
     //     res.cookie('isVisit',1,{maxAge: 60*1000});
     //     console.log('欢迎再次光临');
     // }
-    req.staticRes = staticRes;//给每个请求都设置一个静态资源
+
     //session示例
     if(!req.session.user){
         req.session.user = {
@@ -58,8 +58,13 @@ app.use(function(req, res,next){//设置cookie/session
             login: false
         };
     }
+    // 向页面输出登录状态
+    res.locals.isLogin = req.session.user.login;
     next();
 });
+
+//给每个页面输出静态资源
+app.locals.staticRes = staticRes;
 
 // 设置路由
 app.use('/', routes);

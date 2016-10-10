@@ -5,9 +5,9 @@ var $ = require('../controller/util');
 var wrap = require('co-express');
 
 router.get('/', wrap(function *(req, res, next) {
-    res.render('user',$.extend(req.staticRes,{
+    res.render('user',{
         users: yield $data.getAllUser()
-    }))
+    })
 }));
 
 module.exports = router;
