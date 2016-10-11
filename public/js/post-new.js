@@ -8,11 +8,11 @@ $(function(){
     $("[type='submit']").click(function(e){
         e.preventDefault();
         var obj = {};
-        obj['posttitle'] = $('#title').val();
-        obj['postcontent'] = $('#content').val();
+        obj['postTitle'] = $('#title').val();
+        obj['postContent'] = $('#content').val();
         $.post('post-new',obj,function(data){
-            if(data == '0'){
-                alert('该标题已经存在,请换个标题重新尝试');
+            if(data.code === 0){
+                alert(data.msg);
             }else{
                 window.location.href = 'post/' + data;
             }

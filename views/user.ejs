@@ -3,11 +3,21 @@
 <div class="container">
      <div class="row">
          <div class="col-xs-9">
-            <h4>一个我</h4>
-             <hr>
+            <h4><%= username%></h4>
+             <br>
+             <%for(var i = 0;i<userPost.length;i++){%>
              <article>
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque eos, iusto libero possimus quod? Aspernatur cupiditate eum labore nihil possimus quaerat reiciendis sit sunt temporibus ullam velit, voluptatem.
+                 <div class="h6">
+                     <button class="btn btn-primary btn-xs"><%= userPost[i]['postTags']%></button>
+                     <a href="/post/<%= userPost[i]['_id']%>"><%= userPost[i]['postTitle']%></a>
+                 </div>
+                 <span class="small"><kbd><%= userPost[i]['postDate']%></kbd></span>
+                 <div class="content">
+                     <%= userPost[i]['postContent']%>
+                 </div>
              </article>
+             <hr>
+             <%}%>
          </div>
          <%include ./public/side%>
      </div>

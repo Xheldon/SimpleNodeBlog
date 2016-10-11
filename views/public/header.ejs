@@ -12,10 +12,12 @@
                 <li><a href="#fakelink">Features</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/users" class="navbar-link">Xheldon</a></li>
+                <%if(user.login === true){%>
+                <li><a href="/users/<%= user.id%>" class="navbar-link"><%= user.username%></a></li>
+                <%}%>
                 <li><a href="/post-new"><button type="button" class="btn btn-default navbar-btn btn-xs">写文章</button></a></li>
-                <li class="j_logout" <%if(isLogin === true){%>style="display: block;"<%}else{%> style="display: none"<%}%>><a><button type="button" class="btn btn-default navbar-btn btn-xs">退出</button></a></li>
-                <li class="j_login" <%if(isLogin === true){%>style="display: none;"<%}else{%> style="display: block"<%}%>><a href="/login" target="_self"><button type="button" class="btn btn-default navbar-btn btn-xs">登录</button></a></li>
+                <li class="j_logout" <%if(user.login === true){%>style="display: block;"<%}else{%> style="display: none"<%}%>><a><button type="button" class="btn btn-default navbar-btn btn-xs">退出</button></a></li>
+                <li class="j_login" <%if(user.login === true){%>style="display: none;"<%}else{%> style="display: block"<%}%>><a href="/login" target="_self"><button type="button" class="btn btn-default navbar-btn btn-xs">登录</button></a></li>
             </ul>
         </div>
     </div>

@@ -5,7 +5,6 @@ var $ = require('../controller/util');
 var wrap = require('co-express');
 
 router.get('/', wrap(function *(req, res, next) {
-    console.log(req.headers);
     if(!(req.session.user.username == null || req.session.user == null)){
         if(req.headers.referer === undefined){
             // 若已经登录,而直接访问登录地址,则跳转到首页
@@ -28,7 +27,8 @@ router.post('/', wrap(function *(req, res, next) {
         req.session.user = {
             username: _user.username,
             email: _user.email,
-            login: true
+            login: true,
+            id: _user._id
         };
         res.send('1');
     }else{

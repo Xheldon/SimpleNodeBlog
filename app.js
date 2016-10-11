@@ -59,7 +59,7 @@ app.use(function(req, res,next){//设置cookie/session
         };
     }
     // 向页面输出登录状态
-    res.locals.isLogin = req.session.user.login;
+    res.locals.user = req.session.user;
     next();
 });
 

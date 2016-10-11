@@ -12,6 +12,9 @@ module.exports = {
         return Post.create(data);
     },
     getPostByPostTitle: function(title){
-        return Post.findOne({'posttitle':title});
+        return Post.findOne({'postTitle':title});
+    },
+    getPostByUserId: function(id){
+        return Post.find({postUserId: id});
     }
 };
