@@ -22,6 +22,8 @@ router.post('/', wrap(function *(req, res, next) {
     var user = req.body['username'],
         pw = req.body['password'],
         _user = yield $data.getUserByUserName(user);//未找到为null
+    console.log(_user);
+    console.log(req.body);
     if(_user != null && _user['password'] == pw){
         //登录成功
         req.session.user = {
@@ -30,9 +32,9 @@ router.post('/', wrap(function *(req, res, next) {
             login: true,
             id: _user._id
         };
-        res.send('1');
+        res.send({code: 0, msg: '登录成功！'});
     }else{
-        res.send('0');
+        res.send({code: 1, msg: '登录失败！'});
     }
 }));
 

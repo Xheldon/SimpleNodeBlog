@@ -10,7 +10,7 @@ var UserSchema = new Schema({
     'username': {type:String, required:true},
     'email': {type:String, required: true},
     'password': {type:String, required: true},
-    'registerDate': {type: String, default: Date.now()}
+    'registerDate': {type: Number, default: Date.now()}
 });
 UserSchema.index({'username':1});
 

@@ -16,5 +16,8 @@ module.exports = {
     },
     getPostByUserId: function(id){
         return Post.find({postUserId: id});
+    },
+    getPostByUserName: function(username){
+        return Post.find({postUser: username});
     }
 };

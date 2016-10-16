@@ -14,25 +14,31 @@ router.get('/', wrap(function *(req, res, next) {
             res.redirect(req.headers.referer);
         }
     }else{
-        res.render('login');
+        res.render('register');
     }
 }));
 
 router.post('/', wrap(function *(req, res, next) {
     var user = req.body['username'],
         pw = req.body['password'],
-        _user = yield $data.getUserByUserName(user);//未找到为null
-    if(_user != null && _user['password'] == pw){
-        //登录成功
+        email = req.body['email'],
+        _user = yield $data.getUserByUserName(user),//未找到为null
+        _email = yield $data.getUserByEmail(email);//未找到为null
+    console.log('req.body:' ,req.body,' ;_user:' ,_user, ' _email:',_email);
+    if(_user !== null || _email !== null){
+        // 该用户名已经注册过
+        res.send({code: 1,msg: '该用户名或邮箱已注册，请重试!'});
+    }else{
+        // 正常注册
+        var newUser = yield $data.addUser(req.body);
+        console.log('newUser:',newUser);
         req.session.user = {
             username: _user.username,
             email: _user.email,
             login: true,
             id: _user._id
         };
-        res.send('1');
-    }else{
-        res.send('0');
+        res.send({code: 0, msg: '注册成功'});
     }
 }));
 

@@ -17,6 +17,7 @@
                 <%}%>
                 <li><a href="/post-new"><button type="button" class="btn btn-default navbar-btn btn-xs">写文章</button></a></li>
                 <li class="j_logout" <%if(user.login === true){%>style="display: block;"<%}else{%> style="display: none"<%}%>><a><button type="button" class="btn btn-default navbar-btn btn-xs">退出</button></a></li>
+                <li class="j_register" <%if(user.login === true){%>style="display: none;"<%}else{%> style="display: block"<%}%>><a href="/register" target="_self"><button type="button" class="btn btn-default navbar-btn btn-xs">注册</button></a></li>
                 <li class="j_login" <%if(user.login === true){%>style="display: none;"<%}else{%> style="display: block"<%}%>><a href="/login" target="_self"><button type="button" class="btn btn-default navbar-btn btn-xs">登录</button></a></li>
             </ul>
         </div>

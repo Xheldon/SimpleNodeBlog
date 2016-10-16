@@ -1,7 +1,4 @@
 /**
- * Created by smzdm on 16/5/11.
- */
-/**
  * Created by smzdm on 16/5/4.
  */
 $(function(){
