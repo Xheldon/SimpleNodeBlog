@@ -15,19 +15,26 @@ router.get('/', wrap(function *(req, res, next) {
     });
 }));
 router.get('/:id', wrap(function *(req, res, next) {
+    var userPost,user;
     if(req.params.id.length > 16){
-        var userPost = yield $data.post.getPostByUserId(req.params.id);
+        userPost = yield $data.post.getPostByUserId(req.params.id);
+        user = yield $data.user.getUserByUserId(req.params.id);
     }else{
         userPost = yield $data.post.getPostByUserName(req.params.id);
+        user = yield $data.user.getUserByUserName(req.params.id);
     }
     if(userPost.length){
         res.render('user',{
-            username: userPost[0].postUser,
+            havePost: true,
+            username: user.username,
             userPost: userPost
         })
     }else{
-        // 如果查询用户相关的post为空(因为不止一个,所以是个空数组而不是null),转向首页
-        res.redirect('/');
+        // 如果查询用户相关的post为空(因为不止一个,所以是个空数组而不是null)
+        res.render('user',{
+            havePost: false,
+            username: user.username
+        })
     }
 }));
 

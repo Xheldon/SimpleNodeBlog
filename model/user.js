@@ -3,6 +3,9 @@ module.exports = {
     getAllUser: function(){
         return User.find().exec();
     },
+    getUserByUserId: function(id){
+        return User.findOne({'_id': id}).exec();
+    },
     getUserByUserName: function(username){
         return User.findOne({'username':username}).exec();
     },

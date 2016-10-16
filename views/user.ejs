@@ -5,6 +5,7 @@
          <div class="col-xs-9">
             <h4><%= username%></h4>
              <br>
+             <%if(havePost){%>
              <%for(var i = 0;i<userPost.length;i++){%>
              <article>
                  <div class="h6">
@@ -17,6 +18,9 @@
                  </div>
              </article>
              <hr>
+             <%}%>
+             <%}else{%>
+                <h4>该用户暂时没有文章</h4>
              <%}%>
          </div>
          <%include ./public/side%>

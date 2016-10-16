@@ -24,19 +24,17 @@ router.post('/', wrap(function *(req, res, next) {
         email = req.body['email'],
         _user = yield $data.getUserByUserName(user),//未找到为null
         _email = yield $data.getUserByEmail(email);//未找到为null
-    console.log('req.body:' ,req.body,' ;_user:' ,_user, ' _email:',_email);
     if(_user !== null || _email !== null){
         // 该用户名已经注册过
         res.send({code: 1,msg: '该用户名或邮箱已注册，请重试!'});
     }else{
         // 正常注册
         var newUser = yield $data.addUser(req.body);
-        console.log('newUser:',newUser);
         req.session.user = {
-            username: _user.username,
-            email: _user.email,
+            username: req.body.username,
+            email: req.body.email,
             login: true,
-            id: _user._id
+            id: newUser._id
         };
         res.send({code: 0, msg: '注册成功'});
     }
