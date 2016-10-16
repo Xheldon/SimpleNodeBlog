@@ -12,7 +12,7 @@ var PostSchema = new Schema({
     'postDate': {type:String, required: true},
     'postUser': {type:String,required: true},
     'postUserId': {type: String,required: true},
-    'postTags': {type: String,required: true}
+    'postTags': {type: String,default: '原创'}
 });
 
 module.exports = mongoose.model('Post',PostSchema);

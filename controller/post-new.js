@@ -17,7 +17,6 @@ router.get('/', wrap(function *(req,res,next){
 router.post('/',wrap(function *(req,res){
     req.body['postUser'] = req.session.user['username'];
     req.body['postUserId'] = req.session.user['id'];
-    req.body['postTags'] = '原创';
     var title = yield $data.$post.getPostByPostTitle(req.body['postTitle']);
     if(title != null){
         //若标题已存在
