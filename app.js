@@ -12,6 +12,7 @@ var post = require('./controller/post');
 var login= require('./controller/login');
 var postNew = require('./controller/post-new');
 var logout = require('./controller/logout');
+var register = require('./controller/register');
 //静态资源
 var staticRes = require('./config').lib;
 
@@ -49,7 +50,6 @@ app.use(function(req, res,next){//设置cookie/session
     //     res.cookie('isVisit',1,{maxAge: 60*1000});
     //     console.log('欢迎再次光临');
     // }
-
     //session示例
     if(!req.session.user){
         req.session.user = {
@@ -73,6 +73,7 @@ app.use('/post', post);
 app.use('/login', login);
 app.use('/post-new', postNew);
 app.use('/logout', logout);
+app.use('/register', register);
 
 
 
