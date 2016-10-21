@@ -9,7 +9,6 @@ var wrap = require('co-express');
 
 router.get('/', wrap(function *(req, res, next) {
     var allUser = yield $data.user.getAllUser();
-    console.log(allUser);
     res.render('user-list',{
         users: allUser
     });
