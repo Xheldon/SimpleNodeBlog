@@ -2,21 +2,27 @@
 <%include ./public/header%>
 <div class="container-fluid">
     <div class="login-screen">
-        <div class="login-form">
+        <div class="login-form col-xs-6 col-xs-offset-3">
             <div class="form-group">
+                <label class="login-field-icon fui-user" for="register-name">用户名</label>
+                <input type="password" style="display: none;">
                 <input type="text" class="form-control login-field j_username" value="" placeholder="Enter your name" id="register-name">
-                <label class="login-field-icon fui-user" for="register-name"></label>
+                <input type="password" style="display: none;">
             </div>
             <div class="form-group">
+                <label class="login-field-icon fui-mail" for="register-email">邮箱</label>
+                <input type="password" style="display: none;">
                 <input type="text" class="form-control login-field j_email" value="" placeholder="Enter your email" id="register-email">
-                <label class="login-field-icon fui-user" for="register-email"></label>
+                <input type="password" style="display: none;">
             </div>
             <div class="form-group">
+                <label class="login-field-icon fui-lock" for="register-pass">密码</label>
+                <input type="password" style="display: none;">
                 <input type="password" class="form-control login-field j_password" value="" placeholder="Password" id="register-pass">
-                <label class="login-field-icon fui-lock" for="register-pass"></label>
+                <input type="password" style="display: none;">
             </div>
             <a class="btn btn-primary btn-lg btn-block j_register" href="#">马上注册！</a>
-            <a class="login-link" href="#">忘记密码？没办法，只能联系我吧=_=</a>
+            <a class="login-link" href="/login">登录</a>
         </div>
     </div>
 </div>

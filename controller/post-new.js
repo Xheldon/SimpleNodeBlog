@@ -25,8 +25,11 @@ router.post('/',wrap(function *(req,res){
         var date = new Date(),
             year = date.getFullYear(),
             month = date.getMonth() + 1,
-            day = date.getDate();
-        req.body['postDate'] = year + '-' + month + '-' + day;
+            day = date.getDate(),
+            hour = date.getHours(),
+            min = date.getMinutes(),
+            sec = date.getSeconds();
+        req.body['postDate'] ='于' + year + '年' + month + '月' + day + '日' + hour + '点' + min + '分' + sec + '秒发布';
         var data = yield $data.$post.createNewPost(req.body);
         res.send(data['_id']);
     }

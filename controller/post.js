@@ -8,7 +8,6 @@ router.get('/',wrap(function *(req,res,next){
 }));
 router.get('/:id', wrap(function *(req,res,next){
     var data = yield $data.getPostById(req.params.id);
-    console.log(typeof data);
     if(!data){
         console.log('2',data);
         res.redirect('/');
