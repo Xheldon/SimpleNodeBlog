@@ -13,7 +13,7 @@ router.get('/', wrap(function *(req, res, next) {
         users: allUser
     });
 }));
-router.get('/:id', wrap(function *(req, res, next) {
+router.get('/:id.html', wrap(function *(req, res, next) {
     var userPost,user;
     if(req.params.id.length > 16){
         userPost = yield $data.post.getPostByUserId(req.params.id);

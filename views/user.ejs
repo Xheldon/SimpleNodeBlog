@@ -10,11 +10,11 @@
              <article>
                  <div class="h6">
                      <button class="btn btn-primary btn-xs"><%= userPost[i]['postTags']%></button>
-                     <a href="/post/<%= userPost[i]['_id']%>"><%= userPost[i]['postTitle']%></a>
+                     <a href="/post/<%= userPost[i]['_id']%>.html"><%= userPost[i]['postTitle']%></a>
                  </div>
                  <span class="small"><kbd><%= userPost[i]['postDate']%></kbd></span>
                  <div class="content">
-                     <%= userPost[i]['postContent']%>
+                     <%= userPost[i]['postShortContent']%>
                  </div>
              </article>
              <hr>

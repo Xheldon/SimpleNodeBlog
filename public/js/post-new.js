@@ -11,7 +11,7 @@ $(function(){
             if(data.code === 0){
                 alert(data.msg);
             }else{
-                window.location.href = 'post/' + data;
+                window.location.href = 'post/' + data + '.html';
             }
         })
     });

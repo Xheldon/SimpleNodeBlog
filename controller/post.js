@@ -6,15 +6,19 @@ var wrap = require('co-express');
 router.get('/',wrap(function *(req,res,next){
     res.redirect('/');
 }));
-router.get('/:id', wrap(function *(req,res,next){
-    var data = yield $data.getPostById(req.params.id);
-    if(!data){
-        console.log('2',data);
+router.get('/:id.html', wrap(function *(req,res,next){
+    // 防止Mongoose的CastError
+    if(req.params.id.length !== 24){
         res.redirect('/');
     }else{
-        res.render('post',{
-            data: yield $data.getPostById(req.params.id)
-        })
+        var data = yield $data.getPostById(req.params.id);
+        if(!data){
+            res.redirect('/');
+        }else{
+            res.render('post',{
+                data: data
+            })
+        }
     }
 }));
 module.exports = router;

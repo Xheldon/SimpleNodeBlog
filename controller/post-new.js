@@ -4,6 +4,7 @@
 var express = require('express');
 var router = express.Router();
 var $data = require('../model/core');
+var config = require('../config');
 var $ = require('../controller/util');
 var wrap = require('co-express');
 
@@ -30,6 +31,7 @@ router.post('/',wrap(function *(req,res){
             min = date.getMinutes(),
             sec = date.getSeconds();
         req.body['postDate'] ='于' + year + '年' + month + '月' + day + '日' + hour + '点' + min + '分' + sec + '秒发布';
+        req.body['postShortContent'] = req.body['postContent'].slice(0, config.everyPostWordCount) + '...';
         var data = yield $data.$post.createNewPost(req.body);
         res.send(data['_id']);
     }

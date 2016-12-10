@@ -9,8 +9,12 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
     'username': {type:String, required:true},
     'email': {type:String, required: true},
+    'phone': {type: String, required: true, default: ''},
     'password': {type:String, required: true},
-    'registerDate': {type: Number, default: Date.now()}
+    'registerDate': {type: Number, default: Date.now()},
+    'registerWay': {type: String, required: true, default: 'web'},
+    'nickname': {type: String, default: this.username},
+    'lastLoginDate': {type: Number, required: true, default: Date.now()}
 });
 UserSchema.index({'username':1});
 

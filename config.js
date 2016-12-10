@@ -16,5 +16,7 @@ module.exports = {
     },
     dbaddress: 'localhost',
     dbport: '27017',
-    dbname: 'blog'
+    dbname: 'blog',
+    everyPage: 10, //首页每页十条数据
+    everyPostWordCount: 200
 };
