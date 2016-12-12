@@ -2,7 +2,7 @@
 <%include ./public/header%>
 <div class="container-fluid">
     <div class="login-screen">
-        <div class="login-form col-xs-6 col-xs-offset-3">
+        <form class="login-form col-xs-6 col-xs-offset-3">
             <div class="form-group">
                 <label class="login-field-icon fui-user" for="login-name">用户名</label>
                 <input type="text" class="form-control login-field j_username" value="" placeholder="Enter your name" id="login-name">
@@ -11,9 +11,9 @@
                 <label class="login-field-icon fui-lock" for="login-pass">密码</label>
                 <input type="password" class="form-control login-field j_password" value="" placeholder="Password" id="login-pass">
             </div>
-            <a class="btn btn-primary btn-lg btn-block j_login" href="#">登录</a>
+            <button class="btn btn-primary btn-lg btn-block j_login" href="#">登录</button>
             <a class="login-link" href="/register">注册</a>
-        </div>
+        </form>
     </div>
 </div>
 
