@@ -18,5 +18,6 @@ module.exports = {
     dbport: '27017',
     dbname: 'blog',
     everyPage: 10, //首页每页十条数据
-    everyPostWordCount: 200
+    everyPostWordCount: 200,
+    whiteListOfTags: ['span']
 };
