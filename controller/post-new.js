@@ -7,6 +7,8 @@ var $data = require('../model/core');
 var config = require('../config');
 var $ = require('../controller/util');
 var wrap = require('co-express');
+// 过滤用户提交的内容
+var sanitizeHtml = require('sanitize-html');
 
 router.get('/', wrap(function *(req,res,next){
     if(req.session.user.username == null || req.session.user == null){//前者为未登录,后者为已退出
@@ -18,7 +20,11 @@ router.get('/', wrap(function *(req,res,next){
 router.post('/',wrap(function *(req,res){
     req.body['postUser'] = req.session.user['username'];
     req.body['postUserId'] = req.session.user['id'];
-    var title = yield $data.$post.getPostByPostTitle(req.body['postTitle']);
+
+    var clearTitle = sanitizeHtml(req.body['postTitle']),
+    clearContent = sanitizeHtml(req.body['postContent']);
+    var title = yield $data.$post.getPostByPostTitle(clearTitle);
+    console.log(clearTitle,clearContent);
     if(title != null){
         //若标题已存在
         res.send({code: 0,msg: '标题已存在'});
@@ -31,10 +37,11 @@ router.post('/',wrap(function *(req,res){
             min = date.getMinutes(),
             sec = date.getSeconds();
         req.body['postDate'] ='于' + year + '年' + month + '月' + day + '日' + hour + '点' + min + '分' + sec + '秒发布';
-        if(req.body['postContent'].length >= 200){
-            req.body['postShortContent'] = req.body['postContent'].slice(0, config.everyPostWordCount) + '. . .';
+
+        if(clearContent.length >= 200){
+            req.body['postShortContent'] = clearContent.slice(0, config.everyPostWordCount) + '. . .';
         }else{
-            req.body['postShortContent'] = req.body['postContent'];
+            req.body['postShortContent'] = clearContent;
         }
         var data = yield $data.$post.createNewPost(req.body);
         res.send(data['_id']);

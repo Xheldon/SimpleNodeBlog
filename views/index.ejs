@@ -7,11 +7,11 @@
             <article>
                 <div class="h6">
                     <button class="btn btn-primary btn-xs">原创</button>
-                    <a href="/post/<%=data[i]['_id']%>.html"><%= data[i]['postTitle']%></a>
+                    <a href="/post/<%=data[i]['_id']%>.html"><%- data[i]['postTitle']%></a>
                 </div>
                 <span class="small"><kbd><%=data[i]['postDate']%></kbd></span>
                 <div class="content">
-                    <%= data[i]['postShortContent']%>
+                    <%- data[i]['postShortContent']%>
                 </div>
             </article>
             <hr>

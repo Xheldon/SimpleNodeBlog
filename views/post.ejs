@@ -7,11 +7,11 @@
             <article data-id="<%= data['_id'] %>">
                 <div class="h6">
                     <button class="btn btn-primary btn-xs">原创</button>
-                    <%= data['postTitle']%>
+                    <%- data['postTitle']%>
                 </div>
                 <span class="small"><kbd><%= data['postDate']%></kbd></span>
                 <div class="content">
-                    <%= data['postContent']%>
+                    <%- data['postContent']%>
                 </div>
             </article>
         </div>
