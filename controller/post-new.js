@@ -21,13 +21,35 @@ router.post('/',wrap(function *(req,res){
     req.body['postUser'] = req.session.user['username'];
     req.body['postUserId'] = req.session.user['id'];
 
-    var clearTitle = sanitizeHtml(req.body['postTitle']),
-    clearContent = sanitizeHtml(req.body['postContent']);
-    var title = yield $data.$post.getPostByPostTitle(clearTitle);
-    console.log(clearTitle,clearContent);
+    var dirtyTitle = req.body['postTitle'],
+        dirtyContent = req.body['postContent'];
+
+    //title不允许使用任何html标签，此时过滤一遍title中的html标签和属性，只存储其中的text，在ejs输出中再过滤一遍
+    req.body['postTitle'] = sanitizeHtml(dirtyTitle,{
+        allowedTags: [],
+        allowedAttributes: []
+    });
+
+    var clearContent = sanitizeHtml(dirtyContent, {
+        allowedTags: [],
+        allowedAttributes: []
+    });
+    // 展示在文章列表的简介，不允许使用任何标签, 只保留其中的文本
+    req.body['postShortContent'] = clearContent.length >= config.everyPostWordCount ?
+    clearContent.slice(0, config.everyPostWordCount) + '. . .' : clearContent;
+
+    // 文章详情页中content中只允许使用指定的标签
+    req.body['postContent'] = sanitizeHtml(dirtyTitle, {
+        allowedTags: config.whiteListOfHTMLTags,
+        allowedAttributes: config.whiteListOfHTMLTagsAttr,
+        allowedClasses: config.allowedClasses,
+        allowedSchemes: config.allowedSchemes,
+        transformTags: config.transformTags(sanitizeHtml)
+    });
+    var title = yield $data.$post.getPostByPostTitle(req.body['postTitle']);
     if(title != null){
         //若标题已存在
-        res.send({code: 0,msg: '标题已存在'});
+        res.send({code: 1, msg: '标题已存在', data: null});
     }else{
         var date = new Date(),
             year = date.getFullYear(),
@@ -36,15 +58,12 @@ router.post('/',wrap(function *(req,res){
             hour = date.getHours(),
             min = date.getMinutes(),
             sec = date.getSeconds();
-        req.body['postDate'] ='于' + year + '年' + month + '月' + day + '日' + hour + '点' + min + '分' + sec + '秒发布';
+        req.body['postDate'] = year + '-' + month + '-' + day;
+        req.body['postLastEdit'] = year + '年' + month + '月' + day + '日' + hour + '点' + min + '分' + sec + '秒';
 
-        if(clearContent.length >= 200){
-            req.body['postShortContent'] = clearContent.slice(0, config.everyPostWordCount) + '. . .';
-        }else{
-            req.body['postShortContent'] = clearContent;
-        }
         var data = yield $data.$post.createNewPost(req.body);
-        res.send(data['_id']);
+        console.log(req.body);
+        res.send({code: 0, msg: '', data: data['_id']});
     }
 }));
 module.exports = router;

@@ -17,7 +17,8 @@ var PostSchema = new Schema({
     'postTags': {type: String, default: '原创'},
     'postShortContent': {type: String, required: true},
     'postViewTimes': {type: Number, default: 0},
-    'postCommentTimes': {type: Number, default: 0}
+    'postCommentTimes': {type: Number, default: 0},
+    'postLastEdit': {type: String, required: true}
 });
 
 module.exports = mongoose.model('Post',PostSchema);

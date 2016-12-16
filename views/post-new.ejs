@@ -1,5 +1,5 @@
-<% include ./public/head %>
-<%include ./public/header%>
+<% include ./public/head.ejs %>
+<%include ./public/header.ejs %>
 
 <div class="container">
     <div class="row">
@@ -20,11 +20,11 @@
                     <h3 class="panel-title">小提示</h3>
                 </div>
                 <div class="panel-body">
-                    你可以嵌入script标签,然后引用一个你可以控制的js来攻击我的网站哦~现在我的后端还没有处理提交表单的字符过滤
+                    已经加入防止XSS攻击处理~
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script src="/js/post-new.js"></script>
-<% include ./public/foot %>
+<% include ./public/foot.ejs %>

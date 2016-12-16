@@ -15,6 +15,6 @@ router.get('/',function(req,res,next){
      *   };
      * */
     req.session.destroy();//req.session为undefined
-    res.send({code: 0, msg: '退出成功！'});
+    res.send({code: 0, msg: '退出成功！', data: null});
 });
 module.exports = router;

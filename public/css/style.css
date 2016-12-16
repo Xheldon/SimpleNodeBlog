@@ -37,6 +37,9 @@ body{
 footer{
     background-color: #ecf0f1;
 }
+.content{
+    word-break: break-all;
+}
 /*首页结束*/
 textarea {
     resize: none;

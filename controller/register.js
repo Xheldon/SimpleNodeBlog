@@ -26,7 +26,10 @@ router.post('/', wrap(function *(req, res, next) {
         _email = yield $data.getUserByEmail(email);//未找到为null
     if(_user !== null || _email !== null){
         // 该用户名已经注册过
-        res.send({code: 1,msg: '该用户名或邮箱已注册，请重试!'});
+        res.send({code: 1,msg: '该用户名或邮箱已注册，请重试!', data: {
+            user: _user,
+            email: _email
+        }});
     }else{
         // 正常注册
         var newUser = yield $data.addUser(req.body);
@@ -36,7 +39,7 @@ router.post('/', wrap(function *(req, res, next) {
             login: true,
             id: newUser._id
         };
-        res.send({code: 0, msg: '注册成功'});
+        res.send({code: 0, msg: '注册成功', data: null});
     }
 }));
 

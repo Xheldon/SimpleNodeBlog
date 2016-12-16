@@ -1,5 +1,5 @@
-<% include ./public/head %>
-<%include ./public/header%>
+<% include ./public/head.ejs %>
+<%include ./public/header.ejs %>
 
 <div class="container">
     <div class="row">
@@ -7,7 +7,7 @@
             <article data-id="<%= data['_id'] %>">
                 <div class="h6">
                     <button class="btn btn-primary btn-xs">原创</button>
-                    <%- data['postTitle']%>
+                    <%= data['postTitle']%>
                 </div>
                 <span class="small"><kbd><%= data['postDate']%></kbd></span>
                 <div class="content">
@@ -15,8 +15,8 @@
                 </div>
             </article>
         </div>
-        <%include ./public/side%>
+        <%include ./public/side.ejs%>
     </div>
 </div>
 <script src="/js/post.js"></script>
-<% include ./public/foot %>
+<% include ./public/foot.ejs %>
