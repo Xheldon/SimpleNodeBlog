@@ -58,8 +58,8 @@ router.post('/',wrap(function *(req,res){
             hour = date.getHours(),
             min = date.getMinutes(),
             sec = date.getSeconds();
-        req.body['postDate'] = year + '-' + month + '-' + day;
-        req.body['postLastEdit'] = year + '年' + month + '月' + day + '日' + hour + '点' + min + '分' + sec + '秒';
+        req.body['postCreateAt'] = year + '-' + month + '-' + day;
+        req.body['postUpdateAt'] = year + '-' + month + '-' + day + '  ' + hour + ':' + min + ':' + sec + '秒';
 
         var data = yield $data.$post.createNewPost(req.body);
         console.log(req.body);

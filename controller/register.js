@@ -3,6 +3,8 @@ var router = express.Router();
 var $data = require('../model/core').$user;
 var $ = require('../controller/util');
 var wrap = require('co-express');
+// 过滤用户提交的内容
+var sanitizeHtml = require('sanitize-html');
 
 router.get('/', wrap(function *(req, res, next) {
     if(!(req.session.user.username == null || req.session.user == null)){

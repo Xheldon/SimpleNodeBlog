@@ -12,7 +12,7 @@
                      <button class="btn btn-primary btn-xs"><%= userPost[i]['postTags']%></button>
                      <a href="/post/<%= userPost[i]['_id']%>.html"><%= userPost[i]['postTitle']%></a>
                  </div>
-                 <span class="small"><kbd><%= userPost[i]['postDate']%></kbd></span>
+                 <span class="small"><kbd><%= userPost[i]['postCreateAt']%></kbd></span>
                  <div class="content">
                      <%= userPost[i]['postShortContent']%>
                  </div>

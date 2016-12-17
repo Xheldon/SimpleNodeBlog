@@ -6,10 +6,10 @@
             <%for(var i=0,length = data.length;i<length;i++){%>
             <article>
                 <div class="h6">
-                    <button class="btn btn-primary btn-xs">原创</button>
+                    <button class="btn btn-primary btn-xs"><%= data[i]['postTags']%></button>
                     <a href="/post/<%=data[i]['_id']%>.html"><%= data[i]['postTitle']%></a>
                 </div>
-                <span class="small"><kbd><%=data[i]['postDate']%></kbd></span>
+                <span class="small"><kbd><%=data[i]['postCreateAt']%></kbd></span>
                 <div class="content">
                     <%= data[i]['postShortContent']%>
                 </div>

@@ -3,7 +3,8 @@ var router = express.Router();
 var $data = require('../model/core').$user;
 var $ = require('../controller/util');
 var wrap = require('co-express');
-
+// 过滤用户提交的内容
+var sanitizeHtml = require('sanitize-html');
 router.get('/', wrap(function *(req, res, next) {
     if(!(req.session.user.username == null || req.session.user == null)){
         if(req.headers.referer === undefined){
@@ -19,8 +20,14 @@ router.get('/', wrap(function *(req, res, next) {
 }));
 
 router.post('/', wrap(function *(req, res, next) {
-    var user = req.body['username'],
-        pw = req.body['password'],
+    var user = sanitizeHtml(req.body['username'], {
+            allowedTags: [],
+            allowedAttributes: []
+        }),
+        pw = sanitizeHtml(req.body['password'],{
+            allowedTags: [],
+            allowedAttributes: []
+        }),
         _user = yield $data.getUserByUserName(user);//未找到为null
     if(_user != null && _user['password'] == pw){
         //登录成功
