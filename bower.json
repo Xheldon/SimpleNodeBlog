@@ -1,0 +1,31 @@
+{
+  "name": "nodeblog",
+  "description": "a private blog base of mongoose/node/express/co",
+  "main": "app.js",
+  "authors": [
+    "Xheldon <1006044256@qq.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "mongoose",
+    "blog",
+    "xheldon",
+    "express",
+    "co"
+  ],
+  "homepage": "https://github.com/Xheldon/nodeblog",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "flat-ui": "^2.3.0"
+  }
+}

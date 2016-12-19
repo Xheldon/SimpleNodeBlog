@@ -67,9 +67,7 @@
 ##启动项目步骤(假设已经装好了相关的Node、bower等Node必备组件)
 
 1. `cd` 到此目录,执行 `npm install` 安装依赖.
-2. 执行 `bower install bootstrap`
-3. 执行 `bower install jquery`
-4. 执行 `bower install flat-ui`
+2. 执行 `bower install`
 5. 执行 `npm start`
 
 ##数据结构
