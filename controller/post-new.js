@@ -39,7 +39,7 @@ router.post('/',wrap(function *(req,res){
     clearContent.slice(0, config.everyPostWordCount) + '. . .' : clearContent;
 
     // 文章详情页中content中只允许使用指定的标签
-    req.body['postContent'] = sanitizeHtml(dirtyTitle, {
+    req.body['postContent'] = sanitizeHtml(dirtyContent, {
         allowedTags: config.whiteListOfHTMLTags,
         allowedAttributes: config.whiteListOfHTMLTagsAttr,
         allowedClasses: config.allowedClasses,
