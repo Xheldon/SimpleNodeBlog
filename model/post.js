@@ -5,6 +5,9 @@ module.exports = {
     getAllPost: function(){
         return Post.find().sort({_id: -1}).exec();
     },
+    getLimitPost: function(limitNum, skipNum){
+        return Post.find().sort({_id: -1}).limit(limitNum).skip(skipNum);
+    },
     getPostById: function(id){
         return Post.findOne({'_id':id}).exec();
     },
