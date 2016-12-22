@@ -9,6 +9,7 @@ if($login.length){
             $.post('login', obj, function(data){
                 if(data.code === 1){
                     alert(data.msg);
+                    console.log(data.data);
                 }else if(data.code === 0){
                     var location = window.location.search.slice(1);
                     window.location.href = window.location.origin + '/' + location;

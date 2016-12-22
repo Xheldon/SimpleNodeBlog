@@ -62,7 +62,6 @@ router.post('/',wrap(function *(req,res){
         req.body['postUpdateAt'] = year + '-' + month + '-' + day + '  ' + hour + ':' + min + ':' + sec + '秒';
 
         var data = yield $data.$post.createNewPost(req.body);
-        console.log(req.body);
         res.send({code: 0, msg: '', data: data['_id']});
     }
 }));

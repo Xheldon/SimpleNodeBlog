@@ -14,5 +14,14 @@ module.exports = {
     },
     addUser: function(data){
         return User.create(data);
+    },
+    updateUserLoginDate: function(username, newDate){
+        return User.update({
+            'username': username
+        }, {
+            $set: {
+                'lastLoginDate': newDate
+            }
+        })
     }
 };

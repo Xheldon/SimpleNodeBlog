@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var $data = require('../model/core').$user;
-var $ = require('../controller/util');
+var util = require('./util');
 var wrap = require('co-express');
 // 过滤用户提交的内容
 var sanitizeHtml = require('sanitize-html');
@@ -34,6 +34,8 @@ router.post('/', wrap(function *(req, res, next) {
         }});
     }else{
         // 正常注册
+        var date = util.getDate();
+        req.body['registerDate'] = req.body['lastLoginDate'] = date;
         var newUser = yield $data.addUser(req.body);
         req.session.user = {
             username: req.body.username,

@@ -3,6 +3,7 @@ var router = express.Router();
 var $data = require('../model/core').$user;
 var $ = require('../controller/util');
 var wrap = require('co-express');
+var util = require('./util');
 // 过滤用户提交的内容
 var sanitizeHtml = require('sanitize-html');
 router.get('/', wrap(function *(req, res, next) {
@@ -37,7 +38,13 @@ router.post('/', wrap(function *(req, res, next) {
             login: true,
             id: _user._id
         };
-        res.send({code: 0, msg: '登录成功！', data: null});
+        var updateLoginTime = yield $data.updateUserLoginDate(user, util.getDate());
+        if(updateLoginTime.ok === 1){
+            res.send({code: 0, msg: '登录成功！', data: null});
+        }else{
+            res.send({code: 2, msg: '登录成功,但最新登陆时间获取失败！', data: updateLoginTime});
+        }
+
     }else{
         res.send({code: 1, msg: '登录失败！', data: null});
     }
