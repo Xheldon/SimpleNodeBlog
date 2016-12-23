@@ -16,9 +16,9 @@ var UserSchema = new Schema({
     'password': {type:String, required: true},
     'registerDate': {type: String, required: true},
     'lastLoginDate': {type: String, required: true},
-    'phone': {type: String, default: ''},
+    'phone': {type: String, default: null},
     'registerWay': {type: String, default: 'web'},
-    'nickname': {type: String, default: ''}
+    'nickname': {type: String, default: null}
 });
 UserSchema.index({'username':1});
 
