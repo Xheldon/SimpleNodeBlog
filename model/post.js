@@ -2,8 +2,8 @@
 var Post = require('../schema/core').$post;
 
 module.exports = {
-    getAllPost: function(){
-        return Post.find().sort({_id: -1}).exec();
+    getAllPostLength: function(){
+        return Post.find().count();
     },
     getLimitPost: function(limitNum, skipNum){
         return Post.find().sort({_id: -1}).limit(limitNum).skip(skipNum);
