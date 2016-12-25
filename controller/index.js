@@ -10,12 +10,13 @@ var config = require('../config');
 router.get('/', wrap(function*(req, res, next) {
     var page = parseInt(req.query.page);
     var total = yield $data.getAllPostLength();
+    total = Math.ceil(total/config.everyPage);
     if(Number.isNaN(page)){
         page = 1;
     }
     if(typeof page === 'number'){
         res.render('index',{
-            data: yield $data.getLimitPost(config.everyPage, (req.query.page - 1) * config.everyPage),
+            data: yield $data.getLimitPost(config.everyPage, (page - 1) * config.everyPage),
             pagination: util.gotPagination(total, page)
         });
     }else{

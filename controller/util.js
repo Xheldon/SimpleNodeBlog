@@ -29,7 +29,7 @@ function _gotSinglePage(num) {
 function _gotMultiPage(from, to) {
     var arr = [];
     for(var a=from;a<=to;a++){
-        arr.push(_gotSinglePage(from));
+        arr.push(_gotSinglePage(a));
     }
     return arr.join('');
 }
@@ -77,7 +77,7 @@ exports.extend = function() {
     };
     exports.gotPagination = function(total, current){
         var htmlArr = [];
-        if(total < 10){
+        if(total <= 10){
             // 总页数小于十的时候，全部显示页码
             if(current > 1){
                 // 当前页码大于1时
@@ -115,9 +115,10 @@ exports.extend = function() {
                 htmlArr.push(_gotMultiPage((total-3), total));
                 htmlArr.push('<li class="next"><a href="/?page=3" class="fui-arrow-right"></a></li>');
             }else if(current === 3){
-                htmlArr.push('<li class="previous"><a href="/?page=1" class="fui-arrow-left"></a></li>');
+                htmlArr.push('<li class="previous"><a href="/?page=2" class="fui-arrow-left"></a></li>');
                 htmlArr.push(_gotMultiPage(1, 2));
                 htmlArr.push('<li class="active"><a href="/?page=3" target="_self">3</a></li>');
+                htmlArr.push(_gotMultiPage(4, 5));
                 htmlArr.push('<li>...</li><li>...</li>');
                 htmlArr.push(_gotMultiPage((total-3), total));
                 htmlArr.push('<li class="next"><a href="/?page=3" class="fui-arrow-right"></a></li>');
@@ -144,5 +145,8 @@ exports.extend = function() {
                 }
             }
         }
+        console.log(total);
+        console.log(current);
+        console.log(htmlArr);
     return htmlArr.join('');
     };
