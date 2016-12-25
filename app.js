@@ -69,6 +69,25 @@ app.use(function(req, res,next){//设置cookie/session
 //给每个页面输出静态资源
 app.locals.staticRes = staticRes;
 
+app.use(function (req, res, next) {
+    // [测试]是否能将数据缓存在process，[测试结果]可以
+    if(req.session.user.login){
+        if(!process.name) {
+            process.name = {length: 0};
+        }
+        if(Object.keys(process.name).indexOf(req.session.user.id) === -1){
+            process.name['length'] += 1;
+            process.name[req.session.user.id] = req.session.user.username;
+        }
+        console.log('######################');
+        console.log('当前用户连接数：%d',process.name['length']);
+        // 输出将用户信息挂载到process对象上对内存占用是否有显著影响，若无则考虑将数据库读取的数据挂载上去
+        console.log('当前内存使用:%s', parseInt(process.memoryUsage().heapUsed)/(1024*1024),'MB');
+    }
+    next();
+});
+
+
 // 设置路由
 app.use('/', routes);
 app.use('/users', users);
