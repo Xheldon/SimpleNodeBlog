@@ -145,8 +145,5 @@ exports.extend = function() {
                 }
             }
         }
-        console.log(total);
-        console.log(current);
-        console.log(htmlArr);
     return htmlArr.join('');
     };
