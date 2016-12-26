@@ -3,25 +3,15 @@ module.exports = {
     getAllUser: function(){
         return User.find().exec();
     },
-    getUserByUserId: function(id){
-        return User.findOne({'_id': id}).exec();
+    getOneUser: function(options){
+        return User.findOne(options.condition);
     },
-    getUserByUserName: function(username){
-        return User.findOne({'username':username}).exec();
+    addUser: function(options){
+        return User.create(options);
     },
-    getUserByEmail: function(email){
-        return User.findOne({'email': email}).exec();
-    },
-    addUser: function(data){
-        return User.create(data);
-    },
-    updateUserLoginDate: function(username, newDate){
-        return User.update({
-            'username': username
-        }, {
-            $set: {
-                'lastLoginDate': newDate
-            }
+    updateUser: function(options){
+        return User.update(options.condition, {
+            $set: options.update
         })
     }
 };

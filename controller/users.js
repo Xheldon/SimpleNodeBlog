@@ -16,11 +16,27 @@ router.get('/', wrap(function *(req, res, next) {
 router.get('/:id.html', wrap(function *(req, res, next) {
     var userPost,user;
     if(req.params.id.length > 16){
-        userPost = yield $data.post.getPostByUserId(req.params.id);
-        user = yield $data.user.getUserByUserId(req.params.id);
+        userPost = yield $data.post.getSomePosts({
+            condition: {
+                postUserId: req.params.id
+            }
+        });
+        user = yield $data.user.getOneUser({
+            condition: {
+                _id: req.params.id
+            }
+        });
     }else{
-        userPost = yield $data.post.getPostByUserName(req.params.id);
-        user = yield $data.user.getUserByUserName(req.params.id);
+        userPost = yield $data.post.getSomePosts({
+            condition: {
+                postUser: req.params.id
+            }
+        });
+        user = yield $data.user.getOneUser({
+            condition: {
+                username: req.params.id
+            }
+        });
     }
     if(userPost.length){
         res.render('user',{

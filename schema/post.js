@@ -14,7 +14,7 @@ var PostSchema = new Schema({
     'postUpdateAt': {type: String, required: true},
     'postUser': {type:String, required: true},
     'postUserId': {type: String, required: true},
-    // postStatus分三种，show 展示中, edit 编辑中, hide 被隐藏, draft 草稿
+    // postStatus分三种，show 展示中, hide 被隐藏, draft 草稿
     'postStatus': {type: String, default: 'show'},
     'postMonth': {type:String, default: new Date().getMonth() + 1},
     'postYear': {type:String, default: new Date().getFullYear()},

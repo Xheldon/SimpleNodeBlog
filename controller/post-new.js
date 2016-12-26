@@ -46,7 +46,11 @@ router.post('/',wrap(function *(req,res){
         allowedSchemes: config.allowedSchemes,
         transformTags: config.transformTags(sanitizeHtml)
     });
-    var title = yield $data.$post.getPostByPostTitle(req.body['postTitle']);
+    var title = yield $data.$post.getOnePost({
+        condition: {
+            postTitle: req.body['postTitle']
+        }
+    });
     if(title != null){
         //若标题已存在
         res.send({code: 1, msg: '标题已存在', data: null});

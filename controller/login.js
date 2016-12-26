@@ -21,7 +21,7 @@ router.get('/', wrap(function *(req, res, next) {
 }));
 
 router.post('/', wrap(function *(req, res, next) {
-    var user = sanitizeHtml(req.body['username'], {
+    var username = sanitizeHtml(req.body['username'], {
             allowedTags: [],
             allowedAttributes: []
         }),
@@ -29,7 +29,11 @@ router.post('/', wrap(function *(req, res, next) {
             allowedTags: [],
             allowedAttributes: []
         }),
-        _user = yield $data.getUserByUserName(user);//未找到为null
+        _user = yield $data.getOneUser({
+            condition: {
+                username: username
+            }
+        });//未找到为null
     if(_user != null && _user['password'] == pw){
         //登录成功
         req.session.user = {
@@ -38,7 +42,14 @@ router.post('/', wrap(function *(req, res, next) {
             login: true,
             id: _user._id
         };
-        var updateLoginTime = yield $data.updateUserLoginDate(user, util.getDate());
+        var updateLoginTime = yield $data.updateUser({
+            condition: {
+                username: username
+            },
+            update: {
+                lastLoginDate: util.getDate()
+            }
+        });
         if(updateLoginTime.ok === 1){
             res.send({code: 0, msg: '登录成功！', data: null});
         }else{

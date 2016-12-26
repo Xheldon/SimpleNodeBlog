@@ -2,25 +2,22 @@
 var Post = require('../schema/core').$post;
 
 module.exports = {
-    getAllPostLength: function(){
-        return Post.find().count();
+    getPostsCount: function(options){
+        return Post.find(options.condition).count();
     },
-    getLimitPost: function(limitNum, skipNum){
-        return Post.find().sort({_id: -1}).limit(limitNum).skip(skipNum);
+    getSomePosts: function(options){
+        if(!options.limitNum){
+            options.limitNum = 0;
+        }
+        if(!options.skipNum){
+            options.skipNum = 0;
+        }
+        return Post.find(options.condition).sort({_id: -1}).limit(options.limitNum).skip(options.skipNum);
     },
-    getPostById: function(id){
-        return Post.findOne({'_id':id}).exec();
+    getOnePost: function(options){
+        return Post.findOne(options.condition);
     },
-    createNewPost: function(data){
-        return Post.create(data);
-    },
-    getPostByPostTitle: function(title){
-        return Post.findOne({'postTitle':title});
-    },
-    getPostByUserId: function(id){
-        return Post.find({postUserId: id}).sort({_id: -1});
-    },
-    getPostByUserName: function(username){
-        return Post.find({postUser: username}).sort({_id: -1});
+    createNewPost: function(options){
+        return Post.create(options);
     }
 };

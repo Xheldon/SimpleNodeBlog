@@ -11,7 +11,11 @@ router.get('/:id.html', wrap(function *(req,res,next){
     if(req.params.id.length !== 24){
         res.redirect('/');
     }else{
-        var data = yield $data.getPostById(req.params.id);
+        var data = yield $data.getOnePost({
+            condition: {
+                _id: req.params.id
+            }
+        });
         if(!data){
             res.redirect('/');
         }else{

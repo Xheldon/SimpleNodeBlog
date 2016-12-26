@@ -24,8 +24,16 @@ router.post('/', wrap(function *(req, res, next) {
     var user = req.body['username'],
         pw = req.body['password'],
         email = req.body['email'],
-        _user = yield $data.getUserByUserName(user),//未找到为null
-        _email = yield $data.getUserByEmail(email);//未找到为null
+        _user = yield $data.getOneUser({
+            condition: {
+                username: user
+            }
+        }),//未找到为null
+        _email = yield $data.getOneUser({
+            condition: {
+                email: email
+            }
+        });//未找到为null
     if(_user !== null || _email !== null){
         // 该用户名已经注册过
         res.send({code: 1,msg: '该用户名或邮箱已注册，请重试!', data: {
@@ -37,6 +45,7 @@ router.post('/', wrap(function *(req, res, next) {
         var date = util.getDate();
         req.body['registerDate'] = req.body['lastLoginDate'] = date;
         var newUser = yield $data.addUser(req.body);
+        console.log(newUser);
         req.session.user = {
             username: req.body.username,
             email: req.body.email,
