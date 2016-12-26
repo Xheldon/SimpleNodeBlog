@@ -5,25 +5,31 @@
 
 ##**user**
 ####*`getAllUser`*
+
+返回所有用户信息（*`待调整`*）
+
 	{
-		param: none,
-		return: Array
+	    param: none,
+	    return: Array
 	}
-####*`getUserByUserName`*
+####*`getOneUser`*
+
+获取一个用户信息
+
 	{
-		param: none,
-		return: Array
+		param: options.condition {Object} * 可以在User Schema中招找到所有筛选条件（其他接口类似） *
+		return: userinfo {Object} * user's all info *
 	}
 
-####*`getAllUser`*
+####*`addUser`*
 ##**post**
 
-####*`getAllPost`*
+####*`updateUser`*
 
-####*`getPostById`*
+####*`getPostsCount`*
+
+####*`getSomePosts`*
+
+####*`getOnePost`*
 
 ####*`createNewPost`*
-
-####*`getPostByPostTitle`*
-
-####*`getPostByUserId`*
