@@ -1,7 +1,7 @@
 var User = require('../schema/core').$user;
 module.exports = {
-    getAllUser: function(){
-        return User.find({});
+    getAllUser: function(cb){
+        return User.find({}).exec(cb);
     },
     getOneUser: function(options){
         return User.findOne(options.condition);
