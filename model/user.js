@@ -1,7 +1,7 @@
 var User = require('../schema/core').$user;
 module.exports = {
     getAllUser: function(){
-        return User.find().exec();
+        return User.find({});
     },
     getOneUser: function(options){
         return User.findOne(options.condition);
@@ -12,6 +12,6 @@ module.exports = {
     updateUser: function(options){
         return User.update(options.condition, {
             $set: options.update
-        })
+        });
     }
 };
