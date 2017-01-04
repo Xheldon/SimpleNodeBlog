@@ -45,7 +45,6 @@ router.post('/', wrap(function *(req, res, next) {
         var date = util.getDate();
         req.body['registerDate'] = req.body['lastLoginDate'] = date;
         var newUser = yield $data.addUser(req.body);
-        console.log(newUser);
         req.session.user = {
             username: req.body.username,
             email: req.body.email,

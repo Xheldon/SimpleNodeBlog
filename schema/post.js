@@ -24,5 +24,4 @@ var PostSchema = new Schema({
     'postAllowComments': {type: Boolean, default: true},
 
 });
-
 module.exports = mongoose.model('Post',PostSchema);
