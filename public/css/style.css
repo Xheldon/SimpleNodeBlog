@@ -61,3 +61,10 @@ textarea {
 .login-screen{
     background: white;
 }
+/*翻页*/
+.pagination li{
+    margin-right: 0px;
+}
+.pagination li.previous > a{
+    border-right: 0;
+}
