@@ -103,7 +103,7 @@ exports.extend = function() {
             if(current === 1){
                 htmlArr.push('<li class="active"><a href="/?page=1" target="_self">1</a></li>');
                 htmlArr.push(_gotMultiPage(2, 5));
-                htmlArr.push('<li>...</li><li>...</li>');
+                htmlArr.push('<li><a href="javascript:void(0)">...</a></li><li><a href="javascript:void(0)">...</a></li>');
                 htmlArr.push(_gotMultiPage((total-3), total));
                 htmlArr.push('<li class="next"><a href="/?page=2" class="fui-arrow-right"></a></li>');
             }else if(current === 2){
@@ -111,7 +111,7 @@ exports.extend = function() {
                 htmlArr.push(_gotSinglePage(1));
                 htmlArr.push('<li class="active"><a href="/?page=2" target="_self">2</a></li>');
                 htmlArr.push(_gotMultiPage(3, 5));
-                htmlArr.push('<li>...</li><li>...</li>');
+                htmlArr.push('<li><a href="javascript:void(0)">...</a></li><li><a href="javascript:void(0)">...</a></li>');
                 htmlArr.push(_gotMultiPage((total-3), total));
                 htmlArr.push('<li class="next"><a href="/?page=3" class="fui-arrow-right"></a></li>');
             }else if(current === 3){
@@ -119,7 +119,7 @@ exports.extend = function() {
                 htmlArr.push(_gotMultiPage(1, 2));
                 htmlArr.push('<li class="active"><a href="/?page=3" target="_self">3</a></li>');
                 htmlArr.push(_gotMultiPage(4, 5));
-                htmlArr.push('<li>...</li><li>...</li>');
+                htmlArr.push('<li><a href="javascript:void(0)">...</a></li><li><a href="javascript:void(0)">...</a></li>');
                 htmlArr.push(_gotMultiPage((total-3), total));
                 htmlArr.push('<li class="next"><a href="/?page=3" class="fui-arrow-right"></a></li>');
             }else if(current > 3){
@@ -129,7 +129,7 @@ exports.extend = function() {
                     htmlArr.push(_gotMultiPage(current - 2, current - 1));
                     htmlArr.push('<li class="active"><a href="/?page='+ current +'" target="_self">'+ current +'</a></li>');
                     htmlArr.push(_gotMultiPage(current + 1, current + 2));
-                    htmlArr.push('<li>...</li><li>...</li>');
+                    htmlArr.push('<li><a href="javascript:void(0)">...</a></li><li><a href="javascript:void(0)">...</a></li>');
                     htmlArr.push(_gotMultiPage(total - 2, total));
                     htmlArr.push('<li class="next"><a href="/?page='+ (current+1) +'" class="fui-arrow-right"></a></li>');
                 }else{

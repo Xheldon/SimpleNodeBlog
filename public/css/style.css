@@ -63,8 +63,11 @@ textarea {
 }
 /*翻页*/
 .pagination li{
-    margin-right: 0px;
+    margin: 0;
+}
+.pagination li > a{
+    border: 0;
 }
 .pagination li.previous > a{
-    border-right: 0;
+    border: 0;
 }
