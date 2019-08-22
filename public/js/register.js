@@ -1,5 +1,5 @@
 /**
- * Created by smzdm on 16/5/4.
+ * Created by Xheldon on 16/5/4.
  */
 $(function(){
     $(".j_register").click(function(e){

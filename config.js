@@ -1,5 +1,5 @@
 /**
- * Created by smzdm on 16/4/26.
+ * Created by Xheldon on 16/4/26.
  */
 module.exports = {
     protocol: 'http:',

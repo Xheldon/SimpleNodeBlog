@@ -56,21 +56,23 @@
 
 ### 待优化协同开发体验部分
 
-1. 开发过程中自动化打包工具 `grunt/gulp` 的加入
-2. `rquireJS/seaJS` 依赖加载工具的引入的使用
+1. 加入打包工具 `webpack`, 移除 `bower`
 
 ## 项目运行基本要求
 
-1. `node 4.x` 环境,其他版本未做测试
-2. `mongodb` 最新即可
+1. `node 4.x+` 环境,其他版本未做测试
+2. `mongodb` 最新即可, [安装地址](https://docs.mongodb.com/manual/installation/#mongodb-community-edition-installation-tutorials), 你可能需要 [MongodbGUI](https://www.mongodb.com/download-center/compass?jmp=docs)
 3. `express 4.x` 版本
 4. 一个支持 `ES6` 语法高亮的 `IDE` (推荐 `Webstrom` ,可能需要设置 `JavaScript ES6` 语法支持)
 
 ## 启动项目步骤(假设已经装好了相关的Node、bower等Node必备组件)
 
-1. `cd` 到此目录,执行 `npm install` 安装依赖.
-2. 执行 `bower install`
+1. 启动/配置 `mongodb` (别让我教你启动数据库)
+2. 算了我教你吧还是, 启动数据库(假设是默认数据库配置): `mongod --config /usr/local/etc/mongod.conf`
+3. `cd` 到项目目录,执行 `npm install` 安装依赖
+4. 执行 `bower install`
 5. 执行 `npm start`
+6. 浏览器打开 `localhost:3000` 即可
 
 ## 数据结构
 
